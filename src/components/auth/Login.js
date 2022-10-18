@@ -9,7 +9,7 @@ export const Login = () => {
     const history = useHistory()
 
     const existingManagerCheck = () => {
-        return fetch(`http://localhost:8088/customers?email=${email}`)
+        return fetch(`http://localhost:8088/managers?email=${email}`)
             .then(res => res.json())
             .then(manager => manager.length ? manager[0] : false)
     }
@@ -19,7 +19,7 @@ export const Login = () => {
         existingManagerCheck()
             .then(exists => {
                 if (exists) {
-                    localStorage.setItem("honey_customer", exists.id)
+                    localStorage.setItem("island_manager", exists.id)
                     history.push("/")
                 } else {
                     existDialog.current.showModal()
@@ -36,7 +36,7 @@ export const Login = () => {
 
             <section>
                 <form className="form--login" onSubmit={handleLogin}>
-                    <h1>Honey Rae Repairs</h1>
+                    <h1>Island Manager</h1>
                     <h2>Please sign in</h2>
                     <fieldset>
                         <label htmlFor="inputEmail"> Email address </label>
