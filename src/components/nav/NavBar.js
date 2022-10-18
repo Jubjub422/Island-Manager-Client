@@ -1,13 +1,13 @@
 import React from "react"
 import { Link } from "react-router-dom"
-import useSimpleAuth from "../Auth/useSimpleAuth"
-import "./NavBar.css"
+
+
 
 
 
 
 export const NavBar = () => {
-    const { logout } = useSimpleAuth()
+   
 
 
 
@@ -35,13 +35,7 @@ export const NavBar = () => {
 
 
 
-                        <li className="nav-item dropdown">
-
-                            <Link onClick={() => {
-                                logout()
-                            }} className="nav-link" to="/login">Logout</Link>
-
-                        </li>
+                       
 
                     </ul>
 
