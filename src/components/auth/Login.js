@@ -1,12 +1,12 @@
-import React, { manageref, useState } from "react"
+import React, { useRef, useState } from "react"
 import { Link } from "react-router-dom";
-import { useHistory } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import "./Login.css"
 
 export const Login = () => {
     const [email, set] = useState("")
-    const existDialog = manageref()
-    const history = useHistory()
+    const existDialog = useRef()
+    const navigate = useNavigate()
 
     const existingManagerCheck = () => {
         return fetch(`http://localhost:8088/managers?email=${email}`)
@@ -20,7 +20,7 @@ export const Login = () => {
             .then(exists => {
                 if (exists) {
                     localStorage.setItem("island_manager", exists.id)
-                    history.push("/")
+                    navigate.push("/")
                 } else {
                     existDialog.current.showModal()
                 }
